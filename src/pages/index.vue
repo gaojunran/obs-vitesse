@@ -1,46 +1,36 @@
-<script setup lang="ts" generic="T extends any, O extends any">
-defineOptions({
-  name: 'IndexPage',
-})
+<script lang="ts" setup>
+import {useStateStore} from "~/stores/states";
 
-const name = ref('')
+const states = useStateStore();
 
-const router = useRouter()
-function go() {
-  if (name.value)
-    router.push(`/hi/${encodeURIComponent(name.value)}`)
-}
+// always use `computed` to avoid reactivity issues, or just use `states.counter` directly
+const counter = computed(() => states.counter);
 </script>
 
 <template>
-  <div>
-    <div i-carbon-campsite inline-block text-4xl />
-    <p>
-      <a rel="noreferrer" href="https://github.com/antfu-collective/vitesse-lite" target="_blank">
-        Vitesse Lite
-      </a>
-    </p>
-    <p>
-      <em text-sm op75>Opinionated Vite Starter Template</em>
-    </p>
-
-    <div py-4 />
-
-    <TheInput
-      v-model="name"
-      placeholder="What's your name?"
-      autocomplete="false"
-      @keydown.enter="go"
-    />
-
+  <div fixed bottom-0 w-full h-20 p-4 flex justify-between
+       class="bg-gradient-to-r from-indigo-500:50 from-10% via-sky-500:50 via-30% to-emerald-500:50 to-90%"
+  >
     <div>
-      <button
-        class="m-3 text-sm btn"
-        :disabled="!name"
-        @click="go"
-      >
-        Go
-      </button>
+      <span font-bold font-mono>obs-vitesse</span>
+      <span> - A template of OBS Studio packaging. </span>
+      <div flex>
+        <div text-white:50 hover:text-white transition font-sans>
+          Press
+          <span font-mono bg-white:10 px-1 rounded>Space</span>
+          to toggle Debug Panel.
+        </div>
+      </div>
     </div>
+    <div>
+      <div>counter</div>
+      <div text-align-right text-lg>{{counter}}</div>
+    </div>
+
+
+
+
+
   </div>
+
 </template>

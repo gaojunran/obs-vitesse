@@ -1,5 +1,5 @@
 <template>
-  <div>
-    The page for the route: {{ $route.path }}
+  <div fixed left-2 bottom-2>
+    Route: {{ $route.path }}
   </div>
 </template>
