@@ -5,13 +5,14 @@
 
 <script setup>
 import { onKeyStroke } from '@vueuse/core'
-import {useSocketStore} from "~/stores/socket";
-import {parseMsg} from "~/composables/parse";
-import {useStateStore} from "~/stores/states";
+import { useSocketStore } from "~/stores/socket";
+import { parseMsg } from "~/utils/parse";
+import { useStateStore } from "~/stores/states";
 
 const isPanelShown = ref(false);
 const socket = useSocketStore();
 const states = useStateStore();
+const router = useRouter();
 const msg = computed(() => socket.data);  // attribute of pinia store is generally not reactive
 
 onKeyStroke(' ', (event) => {
@@ -21,7 +22,7 @@ onKeyStroke(' ', (event) => {
 });
 
 watch(msg, (msg, _) => {
-  socket.isCaught = parseMsg(msg, states);
+  socket.isCaught = parseMsg(msg, states, router);
   if (!socket.isCaught) {
     console.log("Failed to parse: ", msg)
     socket.send(JSON.stringify(

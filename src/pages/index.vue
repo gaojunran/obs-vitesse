@@ -13,7 +13,7 @@ const counter = computed(() => states.counter);
   >
     <div>
       <span font-bold font-mono>obs-vitesse</span>
-      <span> - A template of OBS Studio packaging. </span>
+      <span> - A template for OBS Studio packaging. </span>
       <div flex>
         <div text-white:50 hover:text-white transition font-sans>
           Press

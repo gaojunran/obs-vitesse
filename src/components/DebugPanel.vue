@@ -24,11 +24,11 @@ const isCaught = computed(() => socket.isCaught);
     <div text-white font-mono>
       {{ data || '...' }}
     </div>
-    <div mt-4 text-white:50 transition hover:text-white>
+    <div mt-4 text-white:50 transition hover:text-white v-show="data">
       Latest Message Caught or Not:
     </div>
     <div v-if="isCaught" i-typcn-tick text-green-500 p-0 m--1 mt-0 />
-    <div v-else i-typcn-times p-0 m--1 mt-0 text-red-500/>
+    <div v-else v-show="data" i-typcn-times p-0 m--1 mt-0 text-red-500/>
 
     <div mt-4 text-white:50 transition hover:text-white>
       Route:

@@ -3,18 +3,18 @@
 Routes will be auto-generated for Vue files in this dir with the same file structure.
 Check out [`unplugin-vue-router`](https://github.com/posva/unplugin-vue-router) for more details.
 
-### Path Aliasing
+## Path Aliasing
 
 `~/` is aliased to `./src/` folder.
 
 For example, instead of having
 
 ```ts
-import { isDark } from '../../../../composables'
+import { isDark } from '../../../../utils'
 ```
 
 now, you can use
 
 ```ts
-import { isDark } from '~/composables'
+import { isDark } from '~/utils'
 ```
