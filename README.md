@@ -9,11 +9,11 @@ English Readme is preparing...
 项目基于[vitesse-lite](https://github.com/antfu-collective/vitesse-lite)模板。感谢[antfu](https://github.com/antfu)。
 
 ## 特色功能
-- 🌠 最新的技术栈支持（Vite / Vue3 / UnoCSS / TypeScript）
+- 🔥 最新的技术栈支持（Vite / Vue3 / UnoCSS / TypeScript）
 - 🌐 使用WebSocket或HTTP轮询实时更新数据
-- 📁 [基于文件的路由](src/pages/README.md)（支持实时更新）
+- 📄 [基于文件的路由](src/pages/README.md)（支持实时更新）
 - 💽 Pinia状态管理（支持实时更新）
-- 🛠️ [组件自动导入](src/components/README.md)
+- 🧰 [组件自动导入](src/components/README.md)
 - ☁️ 一键部署到Netlify
 - 🔎 简洁高效的Debug Panel
 
@@ -92,11 +92,11 @@ python main.py -p 8080
    </template>
    ```
 
-5. 通常你需要从服务端传输如下格式的JSON消息来改变状态，但你也可以定义任意字符串解析逻辑，在`composables/parse.ts`中定义即可。
+5. 通常你需要从服务端传输如下格式的JSON消息来改变状态，但你也可以定义任意字符串解析逻辑，在`utils/parse.ts`中定义即可。
    ```json
    {"state": "counter", "value": 1}
    ```
-6. 继续编写其它路由对应的页面。通常你可以从服务端传输如下格式的JSON消息来改变路由，但你也可以定义任意字符串解析逻辑，在`composables/parse.ts`中定义即可。
+6. 继续编写其它路由对应的页面。通常你可以从服务端传输如下格式的JSON消息来改变路由，但你也可以定义任意字符串解析逻辑，在`utils/parse.ts`中定义即可。
     ```json
    {"route": "about"}
    ```
