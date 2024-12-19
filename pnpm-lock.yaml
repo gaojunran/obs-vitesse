@@ -31,6 +31,9 @@ importers:
       '@iconify-json/carbon':
         specifier: ^1.2.4
         version: 1.2.4
+      '@iconify-json/typcn':
+        specifier: ^1.2.2
+        version: 1.2.2
       '@types/node':
         specifier: ^22.10.2
         version: 22.10.2
@@ -585,6 +588,9 @@ packages:
 
   '@iconify-json/carbon@1.2.4':
     resolution: {integrity: sha512-DhW2jjMVGwV0DLHc0cmDYohdtGxMra8UuwgjHrryPy+rQX4gXhJwCBBVP2h2UG/92AoRCTn7zUJve4WvY5MLYg==}
+
+  '@iconify-json/typcn@1.2.2':
+    resolution: {integrity: sha512-I7ckhJgsuvzO1JPgEIsbcjvANVoCs3046w7IcdVpMpz7rJPp2r8+PajvpQ84vHYkCTti297NmOTuTARTiaabTw==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -3577,6 +3583,10 @@ snapshots:
   '@humanwhocodes/retry@0.4.1': {}
 
   '@iconify-json/carbon@1.2.4':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/typcn@1.2.2':
     dependencies:
       '@iconify/types': 2.0.0
 

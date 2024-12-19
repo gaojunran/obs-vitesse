@@ -21,9 +21,17 @@ onKeyStroke(' ', (event) => {
 });
 
 watch(msg, (msg, _) => {
-  console.log("WebSocket Msg Received:", msg)
-  if (!parseMsg(msg, states)) {
-    console.log("WebSocket Msg not recognized:", msg)
+  socket.isCaught = parseMsg(msg, states);
+  if (!socket.isCaught) {
+    console.log("Failed to parse: ", msg)
+    socket.send(JSON.stringify(
+      {"status": "failed", "payload": msg}
+    ))
+  } else {
+    console.log("Successfully parsed: ", msg)
+    socket.send(JSON.stringify(
+      {"status": "success", "payload": msg}
+    ))
   }
 }, )
 
