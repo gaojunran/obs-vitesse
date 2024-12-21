@@ -45,7 +45,7 @@ python main.py -p 8080
 
 在浏览器窗口按下空格打开调试面板，查看服务器连接状态。如果显示`OPEN`，则表示您可以继续。
 
-从服务器向客户端传递消息：`cnt=1`，查看浏览器中`count`值的变化。
+从服务器向客户端传递消息：`counter=1`，查看页面右下角值的变化。
 
 从服务器向客户端传递消息：`$more`，查看浏览器路由和页面的变化。
 
@@ -81,8 +81,9 @@ python main.py -p 8080
    import { storeToRefs } from 'pinia'
    const states = useStatesStore()
    const counter = computed(() => states.counter)
-   // OR
+   // OR:
    const { counter } = storeToRefs(states);
+   // DO NOT directly destructure like this: const { counter } = states;
    </script>
 
    <template>
@@ -102,7 +103,15 @@ python main.py -p 8080
    ```
 
 ### 为什么你使用了WebSocket，而不是一个普通的HTTP API，或是使用更简单的数据库等方案？
-一个最直接的原因是实时性。WebSocket支持服务端向客户端主动推送消息，这规避了轮询带来的不必要的流量和延迟问题。OBS也原生支持WebSocket，但涉及到界面上复杂的交互很不方便。
+一个最直接的原因是实时性。WebSocket支持服务端向客户端主动推送消息，这规避了轮询带来的不必要的流量和延迟问题。
+
+此外，OBS也原生支持WebSocket和一套供开发者使用的API，两者结合可以实现更多有趣的功能，尽情发挥你的想象力吧！
+
+🔗参考：
+
+- [OBS Studio WebSocket Guide](https://obsproject.com/kb/remote-control-guide)
+- Bilibili博主码农高天的一个有趣的视频，解释了如何使用OBS原生的WebSocket实现有趣的功能：
+  [如果拉个麦就是真唱，那我感觉我可以出道了](https://www.bilibili.com/video/BV1ob4y1K7ei)
 
 ### 为什么你使用了Pinia，而不是其它方案？
 Pinia提供了一个非常简单的全局状态管理的方案，很适合这个项目。值得注意的是，Pinia store的属性（state）如果被直接解构，似乎不带有响应性。根据官方文档，推荐使用`const { counter } = storeToRefs(states);`的方式来提供可读写的响应式。

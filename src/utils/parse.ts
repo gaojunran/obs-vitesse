@@ -7,8 +7,16 @@ export const parseMsg = (msg: string, store: IStates, router: Router): boolean =
   // Define parsing functions here.
   // All functions should take two parameters: message(string) and store/router, and return a boolean.
   // Order of functions in the array matters, the first function that returns true will be used to parse the message.
-  const stateLogics = [parseStateJSON, parseCounterString, ];
-  const routeLogics = [parseRouteJSON, parseRouteString, ];
+  const stateLogics = [
+    parseStateJSON,
+    parseStateString,
+    // add more parsing logics here...
+  ];
+  const routeLogics = [
+    parseRouteJSON,
+    parseRouteString,
+    // add more parsing logics here...
+  ];
 
   let flag = false;
   for (const logic of stateLogics) {
@@ -57,15 +65,13 @@ const parseStateJSON = (msg: string, store: IStates): boolean => {
 
 /**
  * Sample string message:
- * cnt=10
+ * count=10
  */
-const parseCounterString = (msg: string, store: IStates): boolean => {
-  if (msg.startsWith("cnt=")) {
-    const count = parseInt(msg.slice(4));
-    if (count) {
-      store.modify("counter", count);
-      return true;
-    }
+const parseStateString = (msg: string, store: IStates): boolean => {
+  const [state, value] = msg.split("=");
+  if (state && value) {  // if "=" is not found, skip
+    store.modify(state, value)
+    return true;
   }
   return false; // fall to another parsing logic
 }

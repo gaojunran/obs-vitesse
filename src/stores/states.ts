@@ -16,7 +16,8 @@ export const useStateStore = defineStore('states', {
   actions: {
     modify(attr: string, value: any){
       if (!this.hasOwnProperty(attr)) {
-        throw new Error(`Attribute ${attr} does not exist`);
+        console.error(`Attribute ${attr} does not exist`);
+        return;
       }
       console.log(`Modifying ${attr} to ${value}`)
       this[attr as keyof IStates] = value;
